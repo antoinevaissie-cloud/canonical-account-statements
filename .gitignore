@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Playwright screenshots
+.playwright-mcp/
+
+# Local data files (for privacy)
+july_account_statements_csv/
+july_account_statements/
+
+# Node modules (if added later)
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
