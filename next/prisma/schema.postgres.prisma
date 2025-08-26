@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AccountsReceivable {
+  id            String   @id @default(cuid())
+  owedBy        String?
+  description   String
+  amountCents   Int
+  currency      String   @default("EUR")
+  isPaid        Boolean  @default(false)
+  paymentDate   DateTime
+  notes         String?
+  url           String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("accounts_receivable")
+  @@index([paymentDate])
+}
+
+model AccountsPayable {
+  id            String   @id @default(cuid())
+  payee         String?
+  description   String?
+  amountCents   Int
+  currency      String   @default("EUR")
+  isPaid        Boolean  @default(false)
+  paymentDate   DateTime
+  notes         String?
+  url           String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("accounts_payable")
+  @@index([paymentDate])
+}
+
+model Balance {
+  id                   String   @id @default(cuid())
+  month                DateTime
+  boursoramaCents      Int      @default(0)
+  boursoramaJointCents Int      @default(0)
+  bnpCents             Int      @default(0)
+  revolutGbpCents      Int      @default(0)
+  otherAccountsCents   Int      @default(0)
+  sumOfCashCents       Int      @default(0)
+  notes                String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@unique([month])
+  @@map("balances")
+}
+
+model MonthlyBudget {
+  id                  String   @id @default(cuid())
+  month               DateTime
+  category            String
+  plannedInflowCents  Int      @default(0)
+  plannedOutflowCents Int      @default(0)
+  currency            String   @default("EUR")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([month, category])
+  @@map("monthly_budgets")
+  @@index([month])
+}
+
+model ReviewNote {
+  id        String   @id @default(cuid())
+  month     DateTime
+  content   String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([month])
+  @@map("review_notes")
+}

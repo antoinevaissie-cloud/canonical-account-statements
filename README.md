@@ -21,16 +21,17 @@ A privacy-focused, client-side web application for processing and analyzing bank
 
 ## Technology Stack
 
-- Pure HTML5, CSS3, and JavaScript (ES6+)
-- No external dependencies or frameworks
-- No backend required - runs entirely in the browser
+- Static P&L: Pure HTML5, CSS3, and JavaScript (ES6+), no build step
+- Full Webapp: Next.js 14 (App Router) + Prisma (SQLite by default) for cashflow
 - Zero tracking or analytics
 
 ## Getting Started
 
 ### Online Usage
 
-Visit the hosted version at: [Your GitHub Pages URL]
+- Static P&L can be hosted on GitHub Pages.
+- The full Next.js app can be deployed to Vercel/Railway/Render; configure `DATABASE_URL` and optional `GBP_EUR_RATE`.
+  - The Next app auto-selects a Postgres Prisma schema during build if `DATABASE_URL` starts with `postgres://` or `postgresql://`. Otherwise it uses SQLite locally.
 
 ### Local Development
 
@@ -40,7 +41,7 @@ git clone https://github.com/[your-username]/canonical_account_statements.git
 cd canonical_account_statements
 ```
 
-2. Start a local server:
+2a. Start a local server (static P&L only):
 ```bash
 # Using Python
 python3 -m http.server -d web 8000
@@ -50,6 +51,27 @@ npx serve web -p 8000
 ```
 
 3. Open your browser and navigate to `http://localhost:8000`
+
+2b. Run the full Next.js app (P&L + Cashflow):
+
+```bash
+cd next
+npm install
+echo 'DATABASE_URL="file:./dev.db"' > .env.local
+# optional exchange rate override
+echo 'GBP_EUR_RATE=1.17' >> .env.local
+
+npm run prisma:generate
+npm run prisma:migrate
+npm run prisma:seed # optional
+npm run dev
+```
+
+Open http://localhost:3000. Use the top nav:
+- P&L: `/pl` (React page; client-side CSV parsing)
+- Cashflow: `/receivables`, `/payables`, `/balances`, `/forecast`
+
+Env template: see `next/.env.example`.
 
 ## Usage
 
@@ -94,11 +116,10 @@ spotify = Entertainment
 - **No Cookies**: No tracking cookies or local storage of financial data
 - **Open Source**: Full source code available for audit
 
-## Future Features (Placeholders)
+## Future Features
 
-- **Cashflow Management**: Track and forecast cash movements
 - **Investment Portfolio**: Monitor investment performance
-- **Budget Planning**: Set and track budgets by category
+- **Deeper Budget Planning**: Expand budget vs actual reporting
 
 ## Contributing
 

@@ -1,0 +1,8 @@
+{
+  "/pl/page": "app/pl/page.js",
+  "/receivables/page": "app/receivables/page.js",
+  "/payables/page": "app/payables/page.js",
+  "/balances/page": "app/balances/page.js",
+  "/forecast/page": "app/forecast/page.js",
+  "/review/page": "app/review/page.js"
+}

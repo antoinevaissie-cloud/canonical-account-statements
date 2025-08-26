@@ -1,0 +1,30 @@
+{
+  "node": {
+    "3195f6aceede669b8dd7835c49fd0e4343ae6ac4": {
+      "workers": {
+        "app/receivables/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbook%2FDocuments%2FProjects%2Fcanonical_account_statements%2Fnext%2Fsrc%2Fapp%2Freceivables%2Fpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/receivables/page": "rsc"
+      }
+    },
+    "e265be6764a873cbdeb737b3b8cc01b2098cda1f": {
+      "workers": {
+        "app/payables/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbook%2FDocuments%2FProjects%2Fcanonical_account_statements%2Fnext%2Fsrc%2Fapp%2Fpayables%2Fpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/payables/page": "rsc"
+      }
+    },
+    "e93be1a5bccf49f12e8c2b96c5755b8fab631330": {
+      "workers": {
+        "app/review/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fmacbook%2FDocuments%2FProjects%2Fcanonical_account_statements%2Fnext%2Fsrc%2Fapp%2Freview%2Fpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/review/page": "rsc"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "6QuXGWExYJhf/uN62AIwckNR2qD0Y1SbTHlaNAG4wrM="
+}
